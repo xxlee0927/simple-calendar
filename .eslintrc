@@ -1,6 +1,7 @@
 {
-  "extends": ["react-app", "plugin:prettier/recommended", "plugin:react/recommended"],
-  "plugins": ["import", "simple-import-sort", "prettier", "react", "react-hooks"],
+  "parser":  "@typescript-eslint/parser",
+  "extends": ["react-app", "plugin:prettier/recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["import", "simple-import-sort", "prettier", "react", "react-hooks", "@typescript-eslint"],
   "env": {
     "es6": true,
     "browser": true,
@@ -61,9 +62,17 @@
     ],
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
-    "react/self-closing-comp": 2
+    "react/self-closing-comp": 2,
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ]
   },
-  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018
   }
