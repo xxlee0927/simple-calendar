@@ -33,7 +33,7 @@ const DateSelect: React.FC<{}> = () => {
     <Grid container alignItems="center">
       <Grid item xs={12} md={6}>
         <Box display="flex" alignItems="center">
-          <Box mr={1}>
+          <Box mr={2}>
             <ButtonGroup color="primary" aria-label="outlined primary button group">
               <Button onClick={handleClickPrev}>
                 <ChevronLeftIcon />
