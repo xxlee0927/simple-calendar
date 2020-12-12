@@ -1,6 +1,14 @@
-import { selector } from 'recoil';
+import { selector, selectorFamily } from 'recoil';
 
 import { calendarDateState } from './atom';
+
+const getStartOfWeek = selector({
+  key: 'getStartOfWeek',
+  get: ({ get }) => {
+    const calendarDate = get(calendarDateState);
+    return calendarDate.startOf('week');
+  },
+});
 
 export const getCalendarDateInterval = selector({
   key: 'getCalendarDateInterval',
@@ -12,10 +20,9 @@ export const getCalendarDateInterval = selector({
 });
 
 export const getAllCalendarDate = selector({
-  key: 'getCalendarDateInterval',
+  key: 'getAllCalendarDate',
   get: ({ get }) => {
-    const calendarDate = get(calendarDateState);
-    const startOfWeek = calendarDate.startOf('week');
+    const startOfWeek = get(getStartOfWeek);
 
     return [
       startOfWeek,
@@ -28,3 +35,23 @@ export const getAllCalendarDate = selector({
     ];
   },
 });
+
+export const getAppointments = selector({
+  key: 'getAppointments',
+  get: async ({ get }) => {
+    const startOfWeek = get(getStartOfWeek);
+    const response = await fetch(`api/appointments/${startOfWeek.unix()}`);
+
+    return response.json();
+  },
+});
+
+// export const getAppointmentsByDay = selectorFamily({
+//   key: 'getAppointmentsByDay',
+//   get: date => ({ get }) => {
+//     const appointments = get(getAppointments);
+//     const result = {
+
+//     }
+//   },
+// });

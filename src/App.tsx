@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Calendar from '@/components/Calendar/Calendar';
 import DateSelect from '@/components/DateSelect/DateSelect';
 
-const App: React.FC<{}> = () => {
+const App: React.FC = () => {
   const { t } = useTranslation();
 
   return (
@@ -17,7 +17,9 @@ const App: React.FC<{}> = () => {
       </Typography>
       <DateSelect />
 
-      <Calendar />
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Calendar />
+      </React.Suspense>
     </Box>
   );
 };

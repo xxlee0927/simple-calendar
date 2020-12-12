@@ -15,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { calendarDateState } from '@/recoil/atom';
 import { getCalendarDateInterval } from '@/recoil/selectors';
 
-const DateSelect: React.FC<{}> = () => {
+const DateSelect: React.FC = () => {
   const { t } = useTranslation();
   const [calendarDate, setCalendarDate] = useRecoilState(calendarDateState);
   const [startDate, endDate] = useRecoilValue(getCalendarDateInterval);

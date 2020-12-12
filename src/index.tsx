@@ -1,4 +1,5 @@
 import './i18n';
+import '@/api';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

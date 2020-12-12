@@ -62,16 +62,7 @@
     ],
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
-    "react/self-closing-comp": 2,
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        "extendDefaults": true,
-        "types": {
-          "{}": false
-        }
-      }
-    ]
+    "react/self-closing-comp": 2
   },
   "parserOptions": {
     "ecmaVersion": 2018
