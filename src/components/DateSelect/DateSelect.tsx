@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import dayjs from 'dayjs';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -11,17 +12,21 @@ import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+import { calendarDateState } from '@/recoil/atom';
+import { getCalendarDateInterval } from '@/recoil/selectors';
+
 const DateSelect: React.FC<{}> = () => {
   const { t } = useTranslation();
-  const date = new Date();
+  const [calendarDate, setCalendarDate] = useRecoilState(calendarDateState);
+  const [startDate, endDate] = useRecoilValue(getCalendarDateInterval);
 
-  const dateString = useMemo(() => dayjs(date).format('YYYY/M/D'), [date]);
+  const dateString = useMemo(() => `${startDate.format('YYYY/M/D')} - ${endDate.format('M/D')}`, [startDate, endDate]);
 
   const handleClickPrev = () => {
-    return null;
+    setCalendarDate(dayjs(calendarDate).subtract(1, 'week'));
   };
   const handleClickNext = () => {
-    return null;
+    setCalendarDate(dayjs(calendarDate).add(1, 'week'));
   };
 
   return (
