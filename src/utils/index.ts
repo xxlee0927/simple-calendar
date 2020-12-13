@@ -25,7 +25,7 @@ export const divideIntervalIntoDate = (interval: Interval, minutes: number): Arr
   return result;
 };
 
-const pushToTimeSlots = (weekTimeSlots: WeekTimeSlots, intervals: Array<Interval>, booked: boolean): void => {
+export const pushToTimeSlots = (weekTimeSlots: WeekTimeSlots, intervals: Array<Interval>, booked: boolean): void => {
   intervals.forEach(interval => {
     const dayOfWeek = dayjs(interval.start).day();
 

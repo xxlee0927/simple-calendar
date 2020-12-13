@@ -16,6 +16,21 @@ describe('test divideIntervalIntoDate', () => {
       dayjs('2020-12-17T06:30:00Z'),
     ]);
   });
+  test('interval should be divided into 15 minutes', () => {
+    const interval: Interval = {
+      start: '2020-12-17T05:30:00Z',
+      end: '2020-12-17T07:00:00Z',
+    };
+
+    expect(divideIntervalIntoDate(interval, 15)).toEqual([
+      dayjs('2020-12-17T05:30:00Z'),
+      dayjs('2020-12-17T05:45:00Z'),
+      dayjs('2020-12-17T06:00:00Z'),
+      dayjs('2020-12-17T06:15:00Z'),
+      dayjs('2020-12-17T06:30:00Z'),
+      dayjs('2020-12-17T06:45:00Z'),
+    ]);
+  });
 });
 
 describe('test sortTimeSlots', () => {
