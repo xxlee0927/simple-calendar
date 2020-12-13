@@ -30,3 +30,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Notes
 
 Api calls are mocked by `miragejs` and mock data are stored in `src/api/mockAppointments.json`.
+
+`recoil` for state management.
+
+`material-ui` for component library.
