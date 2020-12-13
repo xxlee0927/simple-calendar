@@ -1,6 +1,6 @@
 {
   "TITLE": "授課時間",
   "DateSelect": {
-    "HINT": "* 時間以 GMT {{timezoneOffset}} 顯示"
+    "HINT": "* 時間以 GMT{{timezoneOffset}} 顯示"
   }
 }

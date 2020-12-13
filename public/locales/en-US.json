@@ -1,6 +1,6 @@
 {
-  "TITLE": "Teaching Time",
+  "TITLE": "Available times",
   "DateSelect": {
-    "HINT": "* Time is displayed in GMT {{timezoneOffset}}"
+    "HINT": "* All the timings listed are in your timezone: GMT{{timezoneOffset}}"
   }
 }

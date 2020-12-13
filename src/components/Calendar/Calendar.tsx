@@ -16,7 +16,7 @@ const Calendar: React.FC = () => {
     <Box display="flex">
       {allCalendarDate.map(date => (
         <Box key={date.valueOf()} flex={1}>
-          <DayColumn date={date} isPast={now.isAfter(allCalendarDate[0], 'day')} />
+          <DayColumn date={date} isPast={now.isAfter(date, 'day')} />
         </Box>
       ))}
     </Box>

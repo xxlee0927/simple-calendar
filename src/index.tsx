@@ -14,12 +14,10 @@ import App from './App';
 const muiTheme = createMuiTheme(theme);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <ThemeProvider theme={muiTheme}>
-        <App />
-      </ThemeProvider>
-    </RecoilRoot>
-  </React.StrictMode>,
+  <RecoilRoot>
+    <ThemeProvider theme={muiTheme}>
+      <App />
+    </ThemeProvider>
+  </RecoilRoot>,
   document.getElementById('root'),
 );
