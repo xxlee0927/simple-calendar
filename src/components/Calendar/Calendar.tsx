@@ -6,14 +6,11 @@ import { useRecoilValue } from 'recoil';
 import Box from '@material-ui/core/Box';
 
 import DayColumn from '@/components/DayColumn/DayColumn';
-import { selectAllCalendarDate, selectAppointments, selectTimeSlots } from '@/recoil/selectors';
+import { selectAllCalendarDate } from '@/recoil/selectors';
 
 const Calendar: React.FC = () => {
   const allCalendarDate = useRecoilValue(selectAllCalendarDate);
-  const appointments = useRecoilValue(selectTimeSlots);
   const [now] = useState(dayjs(new Date()));
-
-  console.log(appointments);
 
   return (
     <Box display="flex">

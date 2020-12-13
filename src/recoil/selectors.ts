@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from 'recoil';
 
-import { getTimeSlots } from '@/utils/';
+import { getWeekTimeSlots } from '@/utils/';
 import { calendarDateState } from './atom';
 
 const selectStartOfWeek = selector({
@@ -47,10 +47,18 @@ export const selectAppointments = selector({
   },
 });
 
-export const selectTimeSlots = selector({
-  key: 'selectTimeSlots',
+export const selectWeekTimeSlots = selector({
+  key: 'selectWeekTimeSlots',
   get: ({ get }) => {
     const appointments = get(selectAppointments);
-    return getTimeSlots(appointments);
+    return getWeekTimeSlots(appointments);
+  },
+});
+
+export const selectTimeSlotsByDay = selectorFamily({
+  key: 'selectTimeSlotsByDay',
+  get: (day: number) => ({ get }) => {
+    const weekTimeSlots = get(selectWeekTimeSlots);
+    return weekTimeSlots[day];
   },
 });

@@ -4,11 +4,15 @@ import React from 'react';
 
 import clsx from 'clsx';
 import { Dayjs } from 'dayjs';
+import { useRecoilValue } from 'recoil';
 
 import { Theme } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+
+import TimeSlotRow from '@/components/TimeSlotRow/TimeSlotRow';
+import { selectTimeSlotsByDay } from '@/recoil/selectors';
 
 const styles = (theme: Theme) => ({
   bar: {
@@ -18,7 +22,7 @@ const styles = (theme: Theme) => ({
     backgroundColor: theme.palette.primary.main,
 
     '&.pastColor': {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.grey[400],
     },
   },
 });
@@ -32,12 +36,17 @@ type Props = {
 
 const DayColumn: React.FC<Props> = ({ date, isPast }) => {
   const classes = useStyles();
+  const timeSlots = useRecoilValue(selectTimeSlotsByDay(date.day()));
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" p={2}>
       <div className={clsx(classes.bar, { pastColor: isPast })} />
       <Typography>{date.locale('zh-tw').format('dd')}</Typography>
       <Typography>{date.format('D')}</Typography>
+
+      {timeSlots.map(timeSlot => (
+        <TimeSlotRow key={timeSlot.date.unix()} timeSlot={timeSlot} />
+      ))}
     </Box>
   );
 };
