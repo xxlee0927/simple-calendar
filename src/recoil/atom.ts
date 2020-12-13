@@ -5,3 +5,8 @@ export const calendarDateState = atom({
   key: 'dateInterval',
   default: dayjs(new Date()),
 });
+
+export const languageState = atom({
+  key: 'language',
+  default: 'zh-TW',
+});

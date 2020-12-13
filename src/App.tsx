@@ -6,18 +6,23 @@ import Typography from '@material-ui/core/Typography';
 
 import Calendar from '@/components/Calendar/Calendar';
 import DateSelect from '@/components/DateSelect/DateSelect';
+import LanguageSelect from '@/components/LanguageSelect/LanguageSelect';
+import Loading from '@/components/Loading/Loading';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Box p={3}>
-      <Typography variant="h6" gutterBottom>
-        {t('TITLE')}
-      </Typography>
-      <DateSelect />
+    <Box p={{ xs: 0.5, md: 3 }}>
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="h6" gutterBottom>
+          {t('TITLE')}
+        </Typography>
+        <LanguageSelect />
+      </Box>
 
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <DateSelect />
+      <React.Suspense fallback={<Loading />}>
         <Calendar />
       </React.Suspense>
     </Box>

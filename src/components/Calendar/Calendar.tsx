@@ -10,7 +10,7 @@ import { selectAllCalendarDate } from '@/recoil/selectors';
 
 const Calendar: React.FC = () => {
   const allCalendarDate = useRecoilValue(selectAllCalendarDate);
-  const [now] = useState(dayjs(new Date()));
+  const [now] = useState(dayjs());
 
   return (
     <Box display="flex">

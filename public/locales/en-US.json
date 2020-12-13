@@ -1,3 +1,6 @@
 {
-  "TITLE": "Teaching Time"
+  "TITLE": "Teaching Time",
+  "DateSelect": {
+    "HINT": "* Time is displayed in GMT {{timezoneOffset}}"
+  }
 }

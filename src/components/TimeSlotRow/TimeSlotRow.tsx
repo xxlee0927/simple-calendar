@@ -27,7 +27,7 @@ const TimeSlotRow: React.FC<Props> = ({ timeSlot }) => {
   const classes = useStyles();
 
   return (
-    <Typography variant="body2" className={timeSlot.booked ? classes.bookedColor : classes.availableColor}>
+    <Typography variant="body2" gutterBottom className={timeSlot.booked ? classes.bookedColor : classes.availableColor}>
       {timeSlot.date.format('HH:mm')}
     </Typography>
   );

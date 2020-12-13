@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import dayjs from 'dayjs';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -14,9 +13,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { calendarDateState } from '@/recoil/atom';
 import { selectCalendarDateInterval } from '@/recoil/selectors';
+import TimezoneHint from './TimezoneHint';
 
 const DateSelect: React.FC = () => {
-  const { t } = useTranslation();
   const [calendarDate, setCalendarDate] = useRecoilState(calendarDateState);
   const [startDate, endDate] = useRecoilValue(selectCalendarDateInterval);
 
@@ -35,7 +34,7 @@ const DateSelect: React.FC = () => {
         <Box display="flex" alignItems="center">
           <Box mr={2}>
             <ButtonGroup color="primary" aria-label="outlined primary button group">
-              <Button onClick={handleClickPrev}>
+              <Button onClick={handleClickPrev} disabled={!startDate.isAfter(dayjs())}>
                 <ChevronLeftIcon />
               </Button>
               <Button onClick={handleClickNext}>
@@ -48,7 +47,7 @@ const DateSelect: React.FC = () => {
       </Grid>
       <Grid item xs={12} md={6}>
         <Box display="flex" justifyContent={{ xs: 'flex-start', md: 'flex-end' }}>
-          <Typography variant="caption">{t('DateSelect.HINT')}</Typography>
+          <TimezoneHint />
         </Box>
       </Grid>
     </Grid>
